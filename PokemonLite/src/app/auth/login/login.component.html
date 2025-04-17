@@ -1,0 +1,17 @@
+<div class="contenedor-login">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label>Email:</label>
+      <input type="email" formControlName="email">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email es obligatorio.</small>
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">Formato de email inválido.</small>
+      </div>
+      
+      <label>Contraseña:</label>
+      <input type="contraseña" formControlName="contraseña" />
+      <div *ngIf="loginForm.get('contraseña')?.invalid && loginForm.get('contraseña')?.touched">
+        <small>Contraseña es obligatoria.</small>
+      </div>
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
