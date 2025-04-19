@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './auth/login/login.component';
+import { ProductsComponent } from './componentes/products/products.component';
 
 @Component({
   selector: 'app-root',
