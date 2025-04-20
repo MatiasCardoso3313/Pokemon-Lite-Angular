@@ -1,10 +1,26 @@
 <body>
     <div class="pokedex">
-        <h2>Pokedex - Lite</h2>
         <div id="pokemon-list">
-            <p></p>
-            <p></p>
-            <p></p>
+            <div>
+                <h1>Pokemons!</h1>
+                <table class="pokemon-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"> {{ this.datosUsuario.nombre }} </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @for (pokemon of pokemonsUsuario; track $index) {
+                                <tr>
+                                    
+                                    <th class="row"> {{ getTipos(pokemon) }} {{ pokemon.name }}</th>
+                                </tr>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
