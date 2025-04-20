@@ -22,12 +22,7 @@ export class AuthService {
     );
   }
   
-  enviarDatos(idusuario: number): Observable<any> {
-    return this.http.get<any[]>('assets/pc.json').pipe(
-      map(datos => {
-        const encontrado = datos.find(item => item[idusuario.toString()]);
-        return encontrado ? encontrado[idusuario.toString()] : null;
-      })
-    )
+  enviarDatos(): Observable<any> {
+    return this.http.get<any>('assets/pc.json'); 
   }
 }

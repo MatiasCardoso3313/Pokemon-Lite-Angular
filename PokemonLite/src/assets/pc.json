@@ -1,14 +1,32 @@
 [
-    {
-        "1": [
+    {   "id" : "1",
+        "datos": [
             {
             "nombre": "Matias",
             "pokemons": [
             {
-                "number": "1"
+                "number": "3",
+                "lvl": "14"
             },
             {
-                "number": "120"
+                "number": "120",
+                "lvl": "50"
+            },
+            {
+                "number": "697",
+                "lvl": "50"
+            },
+            {
+                "number": "897",
+                "lvl": "50"
+            },
+            {
+                "number": "248",
+                "lvl": "50"
+            },
+            {
+                "number": "57",
+                "lvl": "50"
             }
             ]
         }

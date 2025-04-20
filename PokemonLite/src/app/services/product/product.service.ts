@@ -12,4 +12,8 @@ export class ProductService {
   getPokemon(): Observable<any> {
     return this.httpClient.get(this.API_URL).pipe(res => res);
   }
+  getPokemonById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.API_URL + `${id}/`);
+  }
+  
 }

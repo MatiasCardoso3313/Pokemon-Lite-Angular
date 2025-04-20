@@ -1,35 +1,46 @@
 import { Component } from '@angular/core';
-import { ProductsComponent } from '../componentes/products/products.component';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
-import { map, Observable, of } from 'rxjs';
-
+import { ProductService } from '../services/product/product.service';
 @Component({
   selector: 'app-home',
-  imports: [ProductsComponent],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  idUsuario: number | undefined;
-  datosUsuario: any;
-
-  constructor(private route: ActivatedRoute, private authService: AuthService){}
-
-  getUser(): void{
-    if(this.idUsuario != undefined){
-      this.authService.enviarDatos(this.idUsuario).subscribe(datos => {
-        this.datosUsuario = datos;
-      })
-    }
-  }
-
   ngOnInit() {
     this.getUser();
-    console.log(this.datosUsuario);
     this.route.queryParams.subscribe(params => {
       this.idUsuario = +params['id'];
-      console.log('ID del usuario logueado:', this.idUsuario);
     });
+  }
+
+  idUsuario: number | undefined;
+  datosUsuario: any;
+  pokemonsUsuario: any[] = [];
+  constructor(private route: ActivatedRoute, private authService: AuthService, private productService: ProductService){}
+  
+  getUser(): void{
+    this.authService.enviarDatos().subscribe(
+      respuesta => {
+        const usuario = respuesta.find((item: any) => String(item.id) === String(this.idUsuario));
+        this.datosUsuario = usuario.datos[0];
+        this.agregarPokemonPorNumero();
+      })
+  }  
+
+  agregarPokemonPorNumero(){
+    const pokemones = this.datosUsuario.pokemons;
+    for (let pokemon of pokemones)
+      this.productService.getPokemonById(pokemon.number).subscribe({
+        next: (pokemon) => {
+          this.pokemonsUsuario.push(pokemon);
+        }
+      });
+  }
+
+  getTipos(pokemon: any): string {
+    return pokemon.types.map((t: any) => t.type.name);
   }
 }

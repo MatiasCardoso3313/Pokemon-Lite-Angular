@@ -3,19 +3,24 @@
         <div id="pokemon-list">
             <div>
                 <h1>Pokemons!</h1>
-                <table class="table table-hover">
-                    <thead class="table-danger">
+                <table class="pokemon-table">
+                    <thead>
                         <tr>
-                            <th scope="col"></th>
+                            <th scope="col"> {{ this.datosUsuario.nombre }} </th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            @for (pokemon of pokemonsUsuario; track $index) {
+                                <tr>
+                                    
+                                    <th class="row"> {{ getTipos(pokemon) }} {{ pokemon.name }}</th>
+                                </tr>
+                            }
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <p></p>
-            <p></p>
-            <p></p>
         </div>
     </div>
 </body>
