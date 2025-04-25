@@ -12,7 +12,9 @@ export class AuthService {
   validarLogin(usuarioForm: string, contraseniaForm: string): Observable<{encontrado: boolean, id?: number}> {
     return this.http.get<any[]>('assets/usuarios.json').pipe(
       map(users => {
-        const usuarioEncontrado = users.find (usuario => usuario.usuario === usuarioForm && usuario.contrasenia === contraseniaForm);
+        const usuarioEncontrado = users.find 
+        (usuario => usuario.usuario === usuarioForm 
+          && usuario.contrasenia === contraseniaForm);
         if (usuarioEncontrado) {
           return { encontrado: true, id: usuarioEncontrado.id };
         } else {

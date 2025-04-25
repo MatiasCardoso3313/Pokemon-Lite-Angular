@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -30,4 +29,5 @@ export class LoginComponent {
       }
     })
   }
+  
 }

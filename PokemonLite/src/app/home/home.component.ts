@@ -28,19 +28,26 @@ export class HomeComponent {
         this.datosUsuario = usuario.datos[0];
         this.agregarPokemonPorNumero();
       })
-  }  
+  }
 
   agregarPokemonPorNumero(){
-    const pokemones = this.datosUsuario.pokemons;
-    for (let pokemon of pokemones)
-      this.productService.getPokemonById(pokemon.number).subscribe({
+    for (let pokemonUsuario of this.datosUsuario.pokemons)
+      this.productService.getPokemonById(pokemonUsuario.number).subscribe({
         next: (pokemon) => {
-          this.pokemonsUsuario.push(pokemon);
+          this.pokemonsUsuario.push({"pokemon": pokemon, "lvl": pokemonUsuario.lvl});
         }
       });
   }
 
   getTipos(pokemon: any): string {
-    return pokemon.types.map((t: any) => t.type.name);
+    return pokemon.types
+    .map((t: any) => (this.capitalize(t.type.name)))
+    .join(' ')
+  }
+
+  capitalize(texto: string): string {
+    if (!texto) 
+      return '';
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
   }
 }

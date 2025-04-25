@@ -2,22 +2,24 @@
     <div class="pokedex">
         <div id="pokemon-list">
             <div>
-                <h1>Pokemons!</h1>
+                <h1>¡Pokemons de {{ this.datosUsuario.nombre }}!</h1>
                 <table class="pokemon-table">
                     <thead>
                         <tr>
-                            <th scope="col"> {{ this.datosUsuario.nombre }} </th>
+                            <th scope="col"> Types </th>
+                            <th scope="col"> Pokemon </th>
+                            <th scope="col"> Nivel </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            @for (pokemon of pokemonsUsuario; track $index) {
-                                <tr>
-                                    
-                                    <th class="row"> {{ getTipos(pokemon) }} {{ pokemon.name }}</th>
-                                </tr>
-                            }
-                        </tr>
+                        @for (pokemon of pokemonsUsuario; track $index) {
+                            <tr>
+                                
+                                <td class="tipos"> {{ getTipos(pokemon.pokemon) }} </td>
+                                <td class="pokemon"> {{ capitalize(pokemon.pokemon.name) }} </td>
+                                <td class="lvl">{{ pokemon.lvl }}<td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

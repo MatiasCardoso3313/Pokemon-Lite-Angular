@@ -9,6 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'PokemonLite';
+  title = 'Pokedex Lite';
 }
 
